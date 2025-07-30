@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Generator" content="EditPlusÂ®" />
+  <meta name="Author" content="" />
+  <meta name="Keywords" content="" />
+  <meta name="Description" content="" />
+  <title>Document</title>
+  <style>
+    /* Reset box-sizing */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #eef2f7;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form#profileForm {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+
+    form#profileForm input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border: 1.5px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    form#profileForm input:focus {
+      border-color: #0066ff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 102, 255, 0.4);
+    }
+
+    form#profileForm button {
+      width: 100%;
+      padding: 14px 0;
+      background-color: #0066ff;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 7px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form#profileForm button:hover {
+      background-color: #004bb5;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="profileForm">
+    <input type="text" id="profileUsername" placeholder="Username" required />
+    <input type="tel" id="profilePhone" placeholder="Phone (e.g., 1234567890)" required />
+    <input type="date" id="profileDOB" required />
+    <button type="submit">Update Profile</button>
+  </form>
+
+  <script>
+    document.getElementById('profileForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const username = document.getElementById('profileUsername').value.trim();
+      const phone = document.getElementById('profilePhone').value.trim();
+      const dob = new Date(document.getElementById('profileDOB').value);
+      const today = new Date();
+
+      if (username.length < 2) return alert("Username must be at least 2 characters");
+      if (!/^\d{10}$/.test(phone)) return alert("Invalid phone number");
+      if (dob >= today) return alert("Date of Birth must be in the past");
+
+      alert("Profile updated successfully");
+    });
+  </script>
+
+</body>
+</html>
+
+

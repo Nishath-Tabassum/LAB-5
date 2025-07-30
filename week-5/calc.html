@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arithmetic Operations</title>
+</head>
+<body>
+  <h2>Arithmetic Operations</h2>
+  <form id="calform">
+    <label>Enter first number:</label>
+    <input type="number" id="num1" step="any" required><br><br>
+    <label>Enter second number:</label>
+    <input type="number" id="num2" step="any" required><br><br>
+    <label>Select operation:</label>
+    <select id="operation">
+      <option value="add">Addition (a + b)</option>
+      <option value="sub">Subtraction (a - b)</option>
+      <option value="mul">Multiplication (a * b)</option>
+      <option value="div">Division (a / b)</option>
+    </select>
+    <br><br>
+    <button type="button" onclick="calculate()">Calculate</button>
+  </form>
+  <h3 id="result"></h3>
+  <script>
+    function calculate() {
+      var a = parseFloat(document.getElementById('num1').value);
+      var b = parseFloat(document.getElementById('num2').value);
+      var op = document.getElementById('operation').value;
+      var result;
+      if (isNaN(a) || isNaN(b)) {
+        result = "Please enter valid numbers.";
+      } else {
+        switch (op) {
+          case "add":
+            result = "Result: " + (a + b);
+            break;
+          case "sub":
+            result = "Result: " + (a - b);
+            break;
+          case "mul":
+            result = "Result: " + (a * b);
+            break;
+          case "div":
+            if (b === 0) {
+              result = "Error: Division by zero is not allowed.";
+            } else {
+              result = "Result: " + (a / b);
+            }
+            break;
+          default:
+            result = "Invalid operation selected.";
+        }
+      }
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+</body>
+</html>

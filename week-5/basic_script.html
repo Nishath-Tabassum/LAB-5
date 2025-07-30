@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>JavaScript Variables</title>
+</head>
+<body>
+<script>
+  alert("Output will appear directly on the page..");
+  document.write("<h3>-- JavaScript Variables and Data Types Demonstration --</h3>");
+  let age = 30;
+  let price = 24.49;
+  document.write(`Variable: age, Value: ${age}, Type: ${typeof age}<br>`);
+  document.write(`Variable: price, Value: ${price}, Type: ${typeof price}<br>`);
+  let greeting = "Hello World";
+  let isActive = true;
+  let hasPermission = false;
+  document.write(`Variable: greeting, Value: ${greeting}, Type: ${typeof greeting}<br>`);
+  document.write(`Variable: isActive, Value: ${isActive}, Type: ${typeof isActive}<br>`);
+  document.write(`Variable: hasPermission, Value: ${hasPermission}, Type: ${typeof hasPermission}<br>`);
+  const idSymbol = Symbol('uniqueId');
+  const anotherIdSymbol = Symbol('uniqueId');
+  document.write(`idSymbol === anotherIdSymbol: ${idSymbol === anotherIdSymbol}<br>`);
+  let person = {
+    firstName: "Nishath",
+    lastName: "Tabassum",
+    age: 19,
+    isStudent: true
+  };
+  document.write(`Person first name: ${person.firstName}<br>`);
+  var car = "Tesla";
+  document.write(`Initial var car: ${car}<br>`);
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="Generator" content="EditPlusÂ®" />
+  <meta name="Author" content="" />
+  <meta name="Keywords" content="" />
+  <meta name="Description" content="" />
+  <title>Document</title>
+  <style>
+    /* Reset box-sizing */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fa;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    form#paymentForm {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      width: 360px;
+    }
+
+    form#paymentForm input {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      font-size: 16px;
+      border: 1.5px solid #ccc;
+      border-radius: 7px;
+      transition: border-color 0.3s ease;
+    }
+
+    form#paymentForm input:focus {
+      border-color: #007BFF;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+    }
+
+    form#paymentForm button {
+      width: 100%;
+      padding: 14px 0;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 7px;
+      background-color: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    form#paymentForm button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="paymentForm">
+    <input type="text" id="cardName" placeholder="Cardholder Name" required />
+    <input type="text" id="cardNumber" placeholder="Card Number" required />
+    <input type="text" id="cardExpiry" placeholder="MM/YY" required />
+    <input type="text" id="cardCVV" placeholder="CVV" required />
+    <button type="submit">Pay</button>
+  </form>
+
+  <script>
+    document.getElementById('paymentForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const name = document.getElementById('cardName').value.trim();
+      const number = document.getElementById('cardNumber').value.replace(/\s+/g, '');
+      const expiry = document.getElementById('cardExpiry').value.trim();
+      const cvv = document.getElementById('cardCVV').value.trim();
+
+      const cardPattern = /^\d{16}$/;
+      const expiryPattern = /^(0[1-9]|1[0-2])\/\d{2}$/;
+      const cvvPattern = /^\d{3}$/;
+
+      if (name === '') return alert("Cardholder name required");
+      if (!cardPattern.test(number)) return alert("Card number must be 16 digits");
+      if (!expiryPattern.test(expiry)) return alert("Invalid expiry date format");
+      if (!cvvPattern.test(cvv)) return alert("CVV must be 3 digits");
+
+      alert("Payment processed successfully");
+    });
+  </script>
+
+</body>
+</html>
